@@ -39,5 +39,11 @@ Permite cargar íconos de MaterialTheme o drawables de los resources. Si se dese
 - tint: permite cambiar el color mediante la clase Color.
 - modifier: permite cambiar el tamaño y la ubicación, mediante size(numero.dp) y la clase Alignment, respectivamente.
 
+## Listas (LazyColumn)
+Es el reemplazo del clásico RecyclerView. En general se especifica un Modifier.fillMaxSize() para ocupar toda la pantalla. En el LazyColumnScope (dentro de las llaves) se indica "items", que recibe la lista de objetos a mostrar. Para renderizar cada item se abre llaves nuevamente (esto es el LazyItemScope), donde se puede usar un layout determinado para cada item "it". Por ejemplo: Column con 2 Text() y 1 Divider()
+
+Ventajas: en uso conjunto a ViewModel se evita la creación de clases Adapter y ViewHolder.
+
 ## Referencias
 - Tutorial por DevExperto: https://www.youtube.com/watch?v=uonwBFewofI
+- Listas con ViewModel: https://www.youtube.com/watch?v=eOS3M3vYVzA
