@@ -18,11 +18,26 @@ Es el reemplazo del clásico TextView. Sus parámetros principales son:
 - textDecoration: permite aplicar subrayado o tachado al texto, mediante la clase TextDecoration.
 - style: permite aplicar un estilo ya definido con un conjunto de parámetros, por ejemplo de la clase MaterialTheme. Para cambiar valores a partir del estilo se utiliza la función copy(), donde se especifica cada atributo con su nuevo valor.
 
-## Imágenes (Image)
-Es el reemplazo del clásico ImageView.
+## Imágenes de Internet (AsyncImage)
+Se debe utilizar la librería Coil, ya que sigue sin existir soporte nativo para carga de imágenes externas.
 
-## Iconos (Icons)
+``` implementation("io.coil-kt:coil-compose:2.0.0") ```
 
+Recordar agregar el permiso de Internet al Manifest. Se pueden especificar los siguientes parámetros:
+
+- model: se indica la URL de la imagen o bien un objeto ImageRequest.Builder si se desea aplicar crossfade y transformaciones.
+- contentDescription: es el texto alternativo para accesibilidad. Se puede dejar como null.
+- contentScale: permite ajustar el tamaño y recortar la imagen mediante clase ContentClase. Por ejemplo: Crop.
+- modifier: como en todo componente, se puede indicar que ocupe el tamaño completo del parent (fillMaxSize), pero también se pueden realizar transformaciones para evitar el uso de ImageRequest mediante clip(). Por ejemplo: clip(RounderCornerShape(4.dp))
+
+## Iconos (Icon)
+Permite cargar íconos de MaterialTheme o drawables de los resources. Si se desea tener el pack completo de iconos se debe agregar la librería ``` androidx.compose.material:material-icons-extended:1.1.1 ```. Se aceptan los siguientes parámetros:
+
+- imageVector: en caso de usar un ícono de MaterialTheme, se especifica mediante la clase Icons.
+- painter: en caso de usar un drawable de resources, se indica painterResource(id = R.drawable.nombre)
+- contentDescription: es el texto alternativo para accesibilidad. Se puede dejar como null.
+- tint: permite cambiar el color mediante la clase Color.
+- modifier: permite cambiar el tamaño y la ubicación, mediante size(numero.dp) y la clase Alignment, respectivamente.
 
 ## Referencias
 - Tutorial por DevExperto: https://www.youtube.com/watch?v=uonwBFewofI
