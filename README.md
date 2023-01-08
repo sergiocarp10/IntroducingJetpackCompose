@@ -20,6 +20,15 @@ Es el reemplazo del clásico TextView. Sus parámetros principales son:
 - textDecoration: permite aplicar subrayado o tachado al texto, mediante la clase TextDecoration.
 - style: permite aplicar un estilo ya definido con un conjunto de parámetros, por ejemplo de la clase MaterialTheme. Para cambiar valores a partir del estilo se utiliza la función copy(), donde se especifica cada atributo con su nuevo valor.
 
+## Texto editable (OutlinedTextField)
+Es el reemplazo del clásico EditText, con mejor apariencia. Para poder escribir en él se requiere utilizar una variable ```by remember { mutableStateOf("") }```
+
+- value: es el texto a mostrar, en general le asignamos la variable anterior.
+- onValueChange: es la acción a realizar cuando el usuario modifica el texto. En general usaremos ```variable = it```.
+- label: se asigna un scope que permite agregar un Text como ayuda o hint. Se mostrará más pequeño arriba al escribir.
+- trailingIcon: se asigna un scope que permite agregar un IconButton en la parte derecha del texto. Ej: visible/oculto.
+- visualTransformation: permite aplicar el estilo "contraseña" mediante PasswordVisualTransformation()
+
 ## Imágenes de Internet (AsyncImage)
 Se debe utilizar la librería Coil, ya que sigue sin existir soporte nativo para carga de imágenes externas.
 
@@ -40,6 +49,12 @@ Permite cargar íconos de MaterialTheme o drawables de los resources. Si se dese
 - contentDescription: es el texto alternativo para accesibilidad. Se puede dejar como null.
 - tint: permite cambiar el color mediante la clase Color.
 - modifier: permite cambiar el tamaño y la ubicación, mediante size(numero.dp) y la clase Alignment, respectivamente.
+
+### Iconos pulsables (IconButton)
+Posee 1 parámetro: "onClick" donde se indica la acción a ejecutar al ser presionado. Luego, se abren llaves y se agrega el Icon.
+
+### Iconos de 2 estados (IconToggleButton)
+Posee 2 paráemtros: "checked" que puede ser true o false, y "onCheckedChange" donde se indica la acción a ejecutar al ser presionado, generalmente invirtiendo el valor de la variable by remember usada para checked. Luego, se abren llaves y se agrega el Icon.
 
 ## Listas (LazyColumn)
 Es el reemplazo del clásico RecyclerView. En general se especifica un Modifier.fillMaxSize() para ocupar toda la pantalla. En el LazyColumnScope (dentro de las llaves) se indica "items", que recibe la lista de objetos a mostrar. Para renderizar cada item se abre llaves nuevamente (esto es el LazyItemScope), donde se puede usar un layout determinado para cada item "it". Por ejemplo: Column con 2 Text() y 1 Divider()
